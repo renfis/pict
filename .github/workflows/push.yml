@@ -35,7 +35,7 @@ jobs:
         name: Test image runs pict
         # If the string is not found in the output grep will exit with error status
         run: |
-          docker run --rm ${{ env.TEST_TAG }} pict | grep "ERROR Pairwise Independent Combinatorial Testing ERROR"
+          docker run --rm ${{ env.TEST_TAG }} pict | grep "Pairwise Independent Combinatorial Testing"
       - name: Build and push
         uses: docker/build-push-action@v3
         with:
