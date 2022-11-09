@@ -26,11 +26,10 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
-        name: Build and push
+        name: Build test image
         uses: docker/build-push-action@v3
         with:
           load: true
-          platforms: linux/amd64,linux/arm64
           tags: ${{ env.TEST_TAG }}
       -
         name: Test image runs pict
