@@ -1,0 +1,7 @@
+- package-ecosystem: "docker"
+  schedule:
+    interval: "daily"
+    time: "12:00"
+    timezone: "Europe/Berlin"
+  pull-request-branch-name:
+    separator: "_"
