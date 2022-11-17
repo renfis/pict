@@ -1,4 +1,5 @@
 target
 .idea
+.mvn
 *.pict
 *.tests

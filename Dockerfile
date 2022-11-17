@@ -24,7 +24,7 @@ COPY . /workspace/
 
 WORKDIR /workspace
 
-RUN /opt/maven/bin/mvn -N io.takari:maven:wrapper
+RUN /opt/maven/bin/mvn -N wrapper:wrapper
 
 RUN /workspace/mvnw package -Pnative
 
