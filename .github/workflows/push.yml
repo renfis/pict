@@ -1,9 +1,6 @@
 name: ci
 
-on:
-  push:
-    branches:
-      - 'main'
+on: push
 
 env:
   TEST_TAG: image-test
@@ -36,7 +33,9 @@ jobs:
         # If the string is not found in the output grep will exit with error status
         run: |
           docker run --rm ${{ env.TEST_TAG }} pict | grep "Pairwise Independent Combinatorial Testing"
-      - name: Build and push
+      -
+        name: Build and push main
+        if: github.ref == 'refs/heads/main'
         uses: docker/build-push-action@v3
         with:
           push: true
