@@ -5,9 +5,16 @@
     <title>PICT</title>
     <link rel="stylesheet" href="css/98.css">
     <style>
+        body {
+            background-color: #008080;
+        }
         .center {
             margin: auto;
             width: 50%;
+        }
+
+        textarea {
+            resize: none;
         }
     </style>
 </head>
@@ -25,15 +32,15 @@
 
         <section class="field-row-stacked">
             <div class="field-row-stacked">
-                <label for="pict-input">Enter your PICT code here:</label>
-                <textarea id="pict-input" rows="25">Bla Bla Bla...</textarea>
+                <label for="pict-input">Enter PICT params:</label>
+                <textarea id="pict-input" rows="25" onclick="clearInitialText()"></textarea>
             </div>
             <section class="field-row" style="justify-content: flex-end">
-                <input type="submit" class="center">
+                <input type="submit" class="center" onclick="processPict()">
             </section>
             <div class="field-row-stacked">
-                <label for="pict-output">Expect your Output here:</label>
-                <textarea id="pict-output" rows="25"></textarea>
+                <label for="pict-output">Test cases:</label>
+                <textarea id="pict-output" rows="25" readonly onclick="selectAll()"></textarea>
             </div>
         </section>
         <div class="status-bar">
@@ -43,5 +50,40 @@
         </div>
     </div>
 </div>
+<script>
+    const inputField = document.getElementById('pict-input');
+    const outputField = document.getElementById('pict-output');
+
+    const initialText = 'Bla Bla Bla...'
+    inputField.value = initialText;
+    outputField.value = '';
+
+    function clearInitialText() {
+        if (inputField.value === initialText) {
+            inputField.value = '';
+        }
+    }
+
+    function processPict() {
+        if (inputField.value === initialText || inputField.value === '') {
+            return;
+        }
+
+        const xhttp = new XMLHttpRequest();
+        xhttp.open('POST', 'pict', true);
+        xhttp.setRequestHeader('Content-Type', 'text/plain');
+        xhttp.onreadystatechange = function() {
+            if (this.readyState === 4 && this.status === 200) {
+                // Response
+                outputField.value = this.responseText;
+            }
+        };
+        xhttp.send(inputField.value);
+    }
+
+    function selectAll() {
+        outputField.select();
+    }
+</script>
 </body>
 </html>
