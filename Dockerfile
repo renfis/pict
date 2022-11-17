@@ -1,4 +1,4 @@
-FROM ubuntu:22.10 AS builder
+FROM ubuntu:22.10 AS pict-builder
 
 ARG VERSION=v3.7.4
 
@@ -10,7 +10,27 @@ RUN apt-get update \
  && cd pict && git checkout "$VERSION" \
  && make
 
+
+FROM ghcr.io/graalvm/graalvm-ce:22.3.0 AS quarkus-builder
+
+RUN microdnf -y install gzip \
+ && gu install native-image
+
+RUN curl https://dlcdn.apache.org/maven/maven-3/3.8.6/binaries/apache-maven-3.8.6-bin.tar.gz --output /opt/maven.tar.gz \
+ && tar xvzf /opt/maven.tar.gz \
+ && mv apache-maven-3.8.6 /opt/maven
+
+COPY . /workspace/
+
+WORKDIR /workspace
+
+RUN /opt/maven/bin/mvn -N io.takari:maven:wrapper
+
+RUN /workspace/mvnw package -Pnative
+
+
 FROM ubuntu:22.10
 
-COPY --from=builder /pict/pict /usr/local/bin/pict
-CMD ["/usr/local/bin/pict"]
+COPY --from=pict-builder /pict/pict /usr/local/bin/pict
+COPY --from=quarkus-builder /workspace/target/pict-1.0.0-SNAPSHOT-runner /usr/local/bin/app
+CMD ["/usr/local/bin/app"]

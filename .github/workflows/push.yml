@@ -29,14 +29,18 @@ jobs:
           load: true
           tags: ${{ env.TEST_TAG }}
       -
-        name: Build quarkus native image
-        run: |
-          ./mvnw package -Pnative -Dquarkus.native.container-build=true
-      -
         name: Test image runs pict
         # If the string is not found in the output grep will exit with error status
         run: |
           docker run --rm ${{ env.TEST_TAG }} pict | grep "Pairwise Independent Combinatorial Testing"
+      - name: Build and push feature branch
+        if: github.ref != 'refs/heads/main'
+        uses: docker/build-push-action@v3
+        with:
+          push: true
+          platforms: linux/amd64,linux/arm64
+          tags: |
+            renfis/pict:feature-${{ env.GITHUB_BASE_REF }}
       -
         name: Build and push main
         if: github.ref == 'refs/heads/main'
