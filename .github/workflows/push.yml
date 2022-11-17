@@ -29,6 +29,10 @@ jobs:
           load: true
           tags: ${{ env.TEST_TAG }}
       -
+        name: Build quarkus native image
+        run: |
+          ./mvnw package -Pnative -Dquarkus.native.container-build=true
+      -
         name: Test image runs pict
         # If the string is not found in the output grep will exit with error status
         run: |
