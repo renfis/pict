@@ -5,6 +5,7 @@ on: push
 env:
   TEST_TAG: image-test
   PICT_VERSION: 3.7.4
+  REVISION: ${{ inputs.ref || github.head_ref || github.ref_name }}
 
 jobs:
   docker:
@@ -40,7 +41,7 @@ jobs:
           push: true
           platforms: linux/amd64,linux/arm64
           tags: |
-            renfis/pict:feature-${{ env.GITHUB_BASE_REF }}
+            renfis/pict:feature-${{ env.REVISION }}
       -
         name: Build and push main
         if: github.ref == 'refs/heads/main'
