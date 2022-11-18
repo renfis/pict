@@ -8,6 +8,7 @@
         body {
             background-color: #008080;
         }
+
         .center {
             margin: auto;
             width: 50%;
@@ -44,7 +45,7 @@
             </div>
         </section>
         <div class="status-bar">
-            <p class="status-bar-field">Press F1 for help</p>
+            <p class="status-bar-field">Pict Version: 3.7.4</p>
             <p class="status-bar-field">Slide 1</p>
             <p class="status-bar-field">CPU Usage: 14%</p>
         </div>
@@ -72,10 +73,11 @@
         const xhttp = new XMLHttpRequest();
         xhttp.open('POST', 'pict', true);
         xhttp.setRequestHeader('Content-Type', 'text/plain');
-        xhttp.onreadystatechange = function() {
-            if (this.readyState === 4 && this.status === 200) {
-                // Response
-                outputField.value = this.responseText;
+        xhttp.onreadystatechange = function () {
+            if (this.readyState === 4) {
+                outputField.value = this.status === 200
+                    ? this.responseText
+                    : "HTTP STATUS " + this.status + ": " + this.responseText;
             }
         };
         xhttp.send(inputField.value);
