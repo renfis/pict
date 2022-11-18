@@ -1,0 +1,12 @@
+body {
+    background-color: #008080;
+}
+
+.center {
+    margin: auto;
+    width: 50%;
+}
+
+textarea {
+    resize: none;
+}

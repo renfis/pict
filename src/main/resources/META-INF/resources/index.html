@@ -3,21 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>PICT</title>
+    <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/98.css">
-    <style>
-        body {
-            background-color: #008080;
-        }
-
-        .center {
-            margin: auto;
-            width: 50%;
-        }
-
-        textarea {
-            resize: none;
-        }
-    </style>
 </head>
 <body>
 <div class="window center">
@@ -30,7 +17,6 @@
         </div>
     </div>
     <div class="window-body">
-
         <section class="field-row-stacked">
             <div class="field-row-stacked">
                 <label for="pict-input">Enter PICT params:</label>
@@ -51,41 +37,6 @@
         </div>
     </div>
 </div>
-<script>
-    const inputField = document.getElementById('pict-input');
-    const outputField = document.getElementById('pict-output');
-
-    const initialText = 'Bla Bla Bla...'
-    inputField.value = initialText;
-    outputField.value = '';
-
-    function clearInitialText() {
-        if (inputField.value === initialText) {
-            inputField.value = '';
-        }
-    }
-
-    function processPict() {
-        if (inputField.value === initialText || inputField.value === '') {
-            return;
-        }
-
-        const xhttp = new XMLHttpRequest();
-        xhttp.open('POST', 'pict', true);
-        xhttp.setRequestHeader('Content-Type', 'text/plain');
-        xhttp.onreadystatechange = function () {
-            if (this.readyState === 4) {
-                outputField.value = this.status === 200
-                    ? this.responseText
-                    : "HTTP STATUS " + this.status + ": " + this.responseText;
-            }
-        };
-        xhttp.send(inputField.value);
-    }
-
-    function selectAll() {
-        outputField.select();
-    }
-</script>
+<script src="js/main.js"></script>
 </body>
 </html>
