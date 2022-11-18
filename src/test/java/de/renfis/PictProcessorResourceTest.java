@@ -1,5 +1,6 @@
 package de.renfis;
 
+import static de.renfis.FakePictProcessor.PROCESSED_PREFIX;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.is;
 
@@ -12,11 +13,12 @@ public class PictProcessorResourceTest {
 
     @Test
     public void testHelloEndpoint() {
+        var input = "pict input";
         given()
-                .when().body("pict input").post("/pict")
+                .when().body(input).post("/pict")
                 .then()
                 .statusCode(200)
-                .body(is("Processed: pict input"));
+                .body(is(PROCESSED_PREFIX + input));
     }
 
 }
