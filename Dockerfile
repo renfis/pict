@@ -24,9 +24,7 @@ COPY . /workspace/
 
 WORKDIR /workspace
 
-RUN /opt/maven/bin/mvn -N wrapper:wrapper
-
-RUN /workspace/mvnw package -Pnative
+RUN /opt/maven/bin/mvn package -Pnative
 
 
 FROM ubuntu:22.10
