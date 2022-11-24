@@ -43,3 +43,27 @@ function processPict() {
 function selectAll() {
     outputField.select();
 }
+
+function initWindow(name) {
+    const startBarItemId = name + '-item';
+    const minButtonId = name + '-min-button';
+    const closeButtonId = name + '-close-button';
+    const windowId = name + '-window';
+
+    document.getElementById(startBarItemId).addEventListener('click', () => {
+        const classList = document.getElementById(windowId).classList;
+        if (classList.contains('hidden')) {
+            classList.remove('hidden');
+        } else {
+            classList.add('hidden');
+        }
+    });
+
+    [minButtonId, closeButtonId].forEach(elem => {
+        document.getElementById(elem).addEventListener('click', () => {
+            document.getElementById(windowId).classList.add('hidden');
+        });
+    });
+}
+
+['imprint', 'pict', 'privacy-terms'].forEach(name => initWindow(name));

@@ -1,8 +1,12 @@
-# pict
+# Pairwise98
 
-Microsoft PICT in docker
+Pairwise98 is Microsoft PICT in docker together with a web frontend.
 
-Below the default README.md of the quarkus example project
+This is a private project and not connected to Microsoft. It just makes
+use of [Microsoft PICT](https://github.com/microsoft/pict), which was
+published under the
+[MIT License](https://github.com/microsoft/pict/blob/main/LICENSE.TXT)
+by Microsoft.
 
 # getting-started Project
 
@@ -81,3 +85,8 @@ consult https://quarkus.io/guides/maven-tooling.
 Easily start your Reactive RESTful Web Services
 
 [Related guide section...](https://quarkus.io/guides/getting-started-reactive#reactive-jax-rs-resources)
+
+## Third party resources
+
+Used Windows 98 designs from [98.css](https://jdan.github.io/98.css/) and
+[Windows 98 CSS Demo on fjolt.com](https://fjolt.com/article/css-windows-98)

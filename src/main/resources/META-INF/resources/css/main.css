@@ -1,7 +1,3 @@
-body {
-    background-color: #008080;
-}
-
 .center {
     margin: auto;
     width: 50%;
@@ -9,4 +5,24 @@ body {
 
 textarea {
     resize: none;
+}
+
+#imprint-window,
+#privacy-terms-window {
+    position: absolute;
+    z-index: 10;
+}
+
+#imprint-window {
+    top: 100px;
+    left: 50px;
+}
+
+#privacy-terms-window {
+    top: 75px;
+    right: 90px;
+}
+
+.hidden {
+    display: none;
 }
