@@ -42,6 +42,11 @@ textarea {
     right: 90px;
 }
 
+#privacy-terms-text {
+    font-family: "Courier", serif;
+    font-size: medium;
+}
+
 .hidden {
     display: none;
 }
