@@ -1,6 +1,11 @@
 textarea {
     resize: none;
-    /*font-family: "Arial", sans-serif;*/
+    font-family: "Courier", serif;
+    font-size: medium;
+}
+
+.window {
+    overflow: hidden;
 }
 
 .notepad-window {
@@ -9,7 +14,7 @@ textarea {
     width: 50%;
 }
 
-.notepad-window .window-body {
+#imprint-window .window-body {
     font-family: "Arial", sans-serif;
 }
 
@@ -40,11 +45,6 @@ textarea {
 .privacy-terms-window {
     top: 75px;
     right: 90px;
-}
-
-#privacy-terms-text {
-    font-family: "Courier", serif;
-    font-size: medium;
 }
 
 .hidden {
