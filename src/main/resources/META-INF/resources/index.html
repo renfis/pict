@@ -3,18 +3,32 @@
 <head style="height: 100%;">
     <meta charset="UTF-8">
     <title>PICT</title>
-    <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/98.css">
     <link rel="stylesheet" href="css/win98.css">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
 
-<div class="window center" id="pict-window">
+<div id="cookie-info">
+    <div class="window" style="width: 320px">
+        <div class="title-bar">
+            <div class="title-bar-text">Cookie Information</div>
+        </div>
+        <div class="window-body">
+            <p>Diese Webseite nutzt keine Cookies.</p>
+        </div>
+        <section class="field-row" style="justify-content: center">
+            <button class="center" onclick="document.getElementById('cookie-info').classList.add('hidden')">OK</button>
+        </section>
+    </div>
+</div>
+
+<div class="window notepad-window pict-window" id="pict-window">
     <div class="title-bar">
         <div class="title-bar-text">Microsoft PICT Input Form</div>
         <div class="title-bar-controls">
             <button aria-label="Minimize" id="pict-min-button"></button>
-            <button aria-label="Maximize"></button>
+            <button aria-label="Maximize" id="pict-max-button"></button>
             <button aria-label="Close" id="pict-close-button"></button>
         </div>
     </div>
@@ -41,12 +55,12 @@
 </div>
 
 
-<div class="window center notepad-window hidden" id="imprint-window">
+<div class="window notepad-window hidden imprint-window" id="imprint-window">
     <div class="title-bar">
         <div class="title-bar-text">Impressum.txt</div>
         <div class="title-bar-controls">
             <button aria-label="Minimize" id="imprint-min-button"></button>
-            <button aria-label="Maximize"></button>
+            <button aria-label="Maximize" id="imprint-max-button"></button>
             <button aria-label="Close" id="imprint-close-button"></button>
         </div>
     </div>
@@ -60,12 +74,12 @@
     </div>
 </div>
 
-<div class="window center notepad-window hidden" id="privacy-terms-window">
+<div class="window notepad-window hidden privacy-terms-window" id="privacy-terms-window">
     <div class="title-bar">
         <div class="title-bar-text">Datenschutz.txt</div>
         <div class="title-bar-controls">
             <button aria-label="Minimize" id="privacy-terms-min-button"></button>
-            <button aria-label="Maximize"></button>
+            <button aria-label="Maximize" id="privacy-terms-max-button"></button>
             <button aria-label="Close" id="privacy-terms-close-button"></button>
         </div>
     </div>
@@ -86,7 +100,7 @@
 
             <label id="pict-item" class="help-tab tab windows-box-shadow"><span>
                 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwBAMAAAClLOS0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAALVBMVEUAAAAAAACAAAD/AAAA/wAAgACAgIAAAIAAAP///wCAgAAAgIDAwMAA//////9JSTaIAAAAAXRSTlMAQObYZgAAAAFiS0dEDm+9ME8AAAAHdElNRQfiBhoANyn1CWoqAAABtUlEQVQ4y7WTsWrjQBRFRxgFlXohwpu/CKsvMGg6syCYhw0rQqrUq0LMlHERZkBVyi1TpkwRmA9Q2nSBfIDrfEPejGRrlLW3Su4DC97hzuVKHsa+QRGQju1DEg3Pfg9pAPxEcJrDGZ9YgEFEkxMoFhMQHQHpYTAbYg4APweOmuUsn+X/AT+pRbaA66s9uJh5MIhz3Dd3IQQUnN8DCFzJaXNl4PzvPSAq9WfS3DhwB7hq9WbSfAesVTINmw+gbbXWNe2TXfMBWPukpLMk/QQOsZKNOysxzCRmdDxx1YgyBDXAwx2sxUpXSw9uEg8GLRrVdF3pm7sQB9oN/cy1bpacp2NzWL/ZRwCzbkQnMB2b43Pbkuf2uSJDD9ycvL68U2lrq6IjQ5nump9U2y3/3RpzuySDd/TN45dfBbfGGkMJvaNXvN0WHI0x2kdkI3gvCk/UJwe7LAparI1GFxH8JwQdRRuj8IwM5QgqMghErTcbxNARc6cfipSFESzunIPeFH2/LAsAq1yEczSynly5mBLAGcRchgbGEEuXIHFeT69n7BOkrD8Z6H7KXv9eapjTuj522VP21foAO1apyR+rjO8AAAAldEVYdGRhdGU6Y3JlYXRlADIwMTgtMDYtMjZUMDA6NTU6NDEtMDQ6MDA1M539AAAAJXRFWHRkYXRlOm1vZGlmeQAyMDE4LTA2LTI2VDAwOjU1OjQxLTA0OjAwRG4lQQAAAABJRU5ErkJggg=="
-                    alt=""/></span><span>PICT</span></label>
+                     alt=""/></span><span>PICT</span></label>
 
             <label id="imprint-item" class="notepad-tab tab windows-box-shadow"><span>
                 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAUVBMVEUAAACGhoYAgID4+Phm//+ZzMyZ///AwMAAAADM///x8fHM7P/q6upmzMymyvDM/8zd3d2Z/8zj4+MzmZnMzMxmzP9m/8wzzMwzzP/X19f///8yWdUJAAAAAXRSTlMAQObYZgAAAAFiS0dEGnVn5DIAAAAHdElNRQfiBhoALTAhTzgxAAABUklEQVQ4y5WT27aCMAxEJZByqYkFqR7//0fPpKUW0BeH4svsziQuvVx+UNOcz1HU0ukcEerYuf2hnobhEJA1TuPkPc5Vhr6pBLlst5MRo/de6RMwG5evsG8jAnZA9s22yze8jICwB8ZpKEL8rBawvAFyk7fZsmbdAvaArwHqsaUM97tIAVBQbjtdHApshb5dKpAGm+Hgg9WxTRDeAPybpma7i69RHaUGqYAf0axshzkHrG1JICtNT0ai2gpoqIBXh2iGLSodP2wFa8gVhKVSgOPIHYgYLaBvSwK5tJcKdyAk4qL5oQA2AaslR4ZpPpUG2QCNjzibm/yYAqwhJWCCjlmzkxih0rABSH5s2SLP+Ewr5AarIOYt2N4/eVrAmhu2Ic9KE4QKXIaT7rVBmv3PulnCC1rXF552l7ADlhDCy7D2GwDirP4I4N941tH/nPfsf9M/lngcOlIX3Z0AAAAldEVYdGRhdGU6Y3JlYXRlADIwMTgtMDYtMjZUMDA6NDU6NDgtMDQ6MDBhJQfuAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDE4LTA2LTI2VDAwOjQ1OjQ4LTA0OjAwEHi/UgAAAABJRU5ErkJggg==" alt=""/></span><span>Impressum</span></label>
@@ -101,7 +115,6 @@
     </div>
     <div id="time-options"></div>
 </div>
-</form>
 
 
 <script src="js/main.js"></script>

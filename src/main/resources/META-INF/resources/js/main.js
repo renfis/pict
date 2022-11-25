@@ -48,6 +48,7 @@ function initWindow(name) {
     const startBarItemId = name + '-item';
     const minButtonId = name + '-min-button';
     const closeButtonId = name + '-close-button';
+    const maximizeButtonId = name + '-max-button'
     const windowId = name + '-window';
 
     document.getElementById(startBarItemId).addEventListener('click', () => {
@@ -58,6 +59,17 @@ function initWindow(name) {
             classList.add('hidden');
         }
     });
+
+    /*    document.getElementById(maximizeButtonId).addEventListener('click', () => {
+            const classList = document.getElementById(windowId).classList;
+            if (classList.contains('maximize')) {
+                classList.remove('maximize');
+                classList.add(windowId);
+            } else {
+                classList.remove(windowId);
+                classList.add('maximize');
+            }
+        });*/
 
     [minButtonId, closeButtonId].forEach(elem => {
         document.getElementById(elem).addEventListener('click', () => {
