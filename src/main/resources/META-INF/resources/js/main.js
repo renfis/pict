@@ -3,7 +3,7 @@ const outputField = document.getElementById('pict-output');
 const progressStatusParagraph = document.getElementById('progress-status');
 const testAmountParagraph = document.getElementById('test-amount');
 
-const initialText = 'Bla Bla Bla...';
+const initialText = 'Enter PICT params…';
 inputField.value = initialText;
 outputField.value = '';
 progressStatusParagraph.textContent = 'Ready.';
