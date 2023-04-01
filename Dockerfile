@@ -34,6 +34,12 @@ FROM ubuntu:23.04
 COPY --from=pict-builder --chown=1001:root /pict/pict /usr/local/bin/pict
 COPY --from=quarkus-builder --chown=1001:root /workspace/target/pict-1.0.0-SNAPSHOT-runner /usr/local/bin/app
 
+ARG COMMIT_HASH
+ARG BUILD_TIME
+
+ENV COMMIT_HASH=$COMMIT_HASH
+ENV BUILD_TIME=$BUILD_TIME
+
 EXPOSE 8080
 USER 1001
 

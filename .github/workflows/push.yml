@@ -6,6 +6,8 @@ env:
   TEST_TAG: image-test
   PICT_VERSION: 3.7.4
   REVISION: ${{ inputs.ref || github.head_ref || github.ref_name }}
+  COMMIT_HASH: ${{ github.sha }}
+  BUILD_TIME: ${{ github.event.head_commit.timestamp }}
 
 jobs:
   docker:
@@ -36,15 +38,24 @@ jobs:
           docker run --rm ${{ env.TEST_TAG }} pict | grep "Pairwise Independent Combinatorial Testing"
       - name: Build and push feature branch
         if: github.ref != 'refs/heads/main'
+        env:
+          COMMIT_HASH: ${{ env.COMMIT_HASH }}
+          BUILD_TIME: ${{ env.BUILD_TIME }}
         uses: docker/build-push-action@v3
         with:
           push: true
           platforms: linux/amd64,linux/arm64
           tags: |
             renfis/pict:feature-${{ env.REVISION }}
+          build-args: |
+            COMMIT_HASH=${{ env.COMMIT_HASH }}
+            BUILD_TIME=${{ env.BUILD_TIME }}
       -
         name: Build and push main
         if: github.ref == 'refs/heads/main'
+        env:
+          COMMIT_HASH: ${{ env.COMMIT_HASH }}
+          BUILD_TIME: ${{ env.BUILD_TIME }}
         uses: docker/build-push-action@v3
         with:
           push: true
@@ -52,3 +63,6 @@ jobs:
           tags: |
             renfis/pict:latest
             renfis/pict:${{ env.PICT_VERSION }}
+          build-args: |
+            COMMIT_HASH=${{ env.COMMIT_HASH }}
+            BUILD_TIME=${{ env.BUILD_TIME }}
