@@ -1,4 +1,4 @@
-FROM ubuntu:22.10 AS pict-builder
+FROM ubuntu:23.04 AS pict-builder
 
 ARG VERSION=v3.7.4
 
@@ -29,7 +29,7 @@ WORKDIR /workspace
 RUN /opt/maven/bin/mvn package -Pnative
 
 
-FROM ubuntu:22.10
+FROM ubuntu:23.04
 
 COPY --from=pict-builder --chown=1001:root /pict/pict /usr/local/bin/pict
 COPY --from=quarkus-builder --chown=1001:root /workspace/target/pict-1.0.0-SNAPSHOT-runner /usr/local/bin/app
