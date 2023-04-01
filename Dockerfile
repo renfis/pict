@@ -16,9 +16,11 @@ FROM ghcr.io/graalvm/graalvm-ce:22.3.0 AS quarkus-builder
 RUN microdnf -y install gzip \
  && gu install native-image
 
-RUN curl https://dlcdn.apache.org/maven/maven-3/3.8.6/binaries/apache-maven-3.8.6-bin.tar.gz --output /opt/maven.tar.gz \
+ARG MAVEN_VERSION=3.9.1
+
+RUN curl https://dlcdn.apache.org/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz --output /opt/maven.tar.gz \
  && tar xvzf /opt/maven.tar.gz \
- && mv apache-maven-3.8.6 /opt/maven
+ && mv apache-maven-$MAVEN_VERSION /opt/maven
 
 COPY . /workspace/
 
