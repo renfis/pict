@@ -1,25 +1,45 @@
 # Pairwise98
 
-Pairwise98 is Microsoft PICT in docker together with a web frontend.
+Pairwise98 is Microsoft PICT in a Docker container along with a web
+frontend.
 
-This is a private project and not connected to Microsoft. It just makes
-use of [Microsoft PICT](https://github.com/microsoft/pict), which was
-published under the
+Please note: The website design mimics Windows 98 and is only
+functional on large desktop screens. However, since this project
+was only intended as a technical demo for a talk, this is perfectly
+fine for the target audience.
+
+![Screenshot of the Website](screenshot.webp)
+
+This is a private project and is not affiliated with Microsoft.
+It simply uses [Microsoft PICT](https://github.com/microsoft/pict),
+which was published under the
 [MIT License](https://github.com/microsoft/pict/blob/main/LICENSE.TXT)
 by Microsoft.
 
-# getting-started Project
+# Quarkus
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
+To learn more about Quarkus, please visit its website at https://quarkus.io/.
 
-If you want to learn more about Quarkus, please visit its
-website: https://quarkus.io/ .
+## Build Docker image
+
+A Docker image is pushed to Docker Hub with each CI build and can be found
+here: https://hub.docker.com/r/renfis/pict. To build and run the Docker
+image locally, execute the following commands:
+
+```shell
+docker build -t pict .
+
+docker run --rm -it -p8080:8080 pict
+```
+
+Then navigate to `http://localhost:8080` in your favorite desktop browser.
 
 ## Running the application in dev mode
 
 You can run your application in dev mode that enables live coding using:
 
-```shell script
+```shell
 mvn compile quarkus:dev
 ```
 
@@ -30,7 +50,7 @@ mvn compile quarkus:dev
 
 The application can be packaged using:
 
-```shell script
+```shell
 mvn package
 ```
 
@@ -41,27 +61,18 @@ the `target/quarkus-app/lib/` directory.
 The application is now runnable
 using `java -jar target/quarkus-app/quarkus-run.jar`.
 
-If you want to build an _über-jar_, execute the following command:
-
-```shell script
-mvn package -Dquarkus.package.type=uber-jar
-```
-
-The application, packaged as an _über-jar_, is now runnable
-using `java -jar target/*-runner.jar`.
-
 ## Creating a native executable
 
 You can create a native executable using:
 
-```shell script
+```shell
 mvn package -Pnative
 ```
 
 Or, if you don't have GraalVM installed, you can run the native executable build
 in a container using:
 
-```shell script
+```shell
 mvn package -Pnative -Dquarkus.native.container-build=true
 ```
 
