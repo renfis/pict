@@ -1,5 +1,7 @@
 # Pairwise98
 
+[![ci](https://github.com/renfis/pict/actions/workflows/push.yml/badge.svg)](https://github.com/renfis/pict/actions/workflows/push.yml)
+
 Pairwise98 is Microsoft PICT in a Docker container along with a web
 frontend.
 
