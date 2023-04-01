@@ -3,7 +3,7 @@ const outputField = document.getElementById('pict-output');
 const progressStatusParagraph = document.getElementById('progress-status');
 const testAmountParagraph = document.getElementById('test-amount');
 
-const initialText = 'Bla Bla Bla...';
+const initialText = 'Enter PICT params…';
 inputField.value = initialText;
 outputField.value = '';
 progressStatusParagraph.textContent = 'Ready.';
@@ -43,3 +43,39 @@ function processPict() {
 function selectAll() {
     outputField.select();
 }
+
+function initWindow(name) {
+    const startBarItemId = name + '-item';
+    const minButtonId = name + '-min-button';
+    const closeButtonId = name + '-close-button';
+    const maximizeButtonId = name + '-max-button'
+    const windowId = name + '-window';
+
+    document.getElementById(startBarItemId).addEventListener('click', () => {
+        const classList = document.getElementById(windowId).classList;
+        if (classList.contains('hidden')) {
+            classList.remove('hidden');
+        } else {
+            classList.add('hidden');
+        }
+    });
+
+    /*    document.getElementById(maximizeButtonId).addEventListener('click', () => {
+            const classList = document.getElementById(windowId).classList;
+            if (classList.contains('maximize')) {
+                classList.remove('maximize');
+                classList.add(windowId);
+            } else {
+                classList.remove(windowId);
+                classList.add('maximize');
+            }
+        });*/
+
+    [minButtonId, closeButtonId].forEach(elem => {
+        document.getElementById(elem).addEventListener('click', () => {
+            document.getElementById(windowId).classList.add('hidden');
+        });
+    });
+}
+
+['imprint', 'pict', 'privacy-terms'].forEach(name => initWindow(name));
