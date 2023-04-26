@@ -11,7 +11,7 @@ RUN apt-get update \
  && make
 
 
-FROM ghcr.io/graalvm/graalvm-ce:22.3.1 AS quarkus-builder
+FROM ghcr.io/graalvm/graalvm-ce:22.3.2 AS quarkus-builder
 
 RUN microdnf -y install gzip \
  && gu install native-image
