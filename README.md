@@ -1,6 +1,9 @@
 # Pairwise98
 
 [![ci](https://github.com/renfis/pict/actions/workflows/push.yml/badge.svg)](https://github.com/renfis/pict/actions/workflows/push.yml)
+![Website](https://img.shields.io/website?url=https%3A%2F%2Fwww.pairwise98.de)
+![Docker Image Size (tag)](https://img.shields.io/docker/image-size/renfis/pict/latest)
+![License](https://img.shields.io/github/license/renfis/pict)
 
 Pairwise98 is Microsoft PICT in a Docker container along with a web
 frontend.
