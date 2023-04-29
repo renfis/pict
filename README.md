@@ -12,22 +12,28 @@ fine for the target audience.
 
 ![Screenshot of the Website](screenshot.webp)
 
+Access the tool at [pairwise98.de](https://www.pairwise98.de).
+
 This is a private project and is not affiliated with Microsoft.
 It simply uses [Microsoft PICT](https://github.com/microsoft/pict),
 which was published under the
 [MIT License](https://github.com/microsoft/pict/blob/main/LICENSE.TXT)
 by Microsoft.
 
-# Quarkus
+## Run latest version
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
-To learn more about Quarkus, please visit its website at https://quarkus.io/.
+This project's Docker images are published on [Docker Hub](https://hub.docker.com/r/renfis/pict).
+The easiest way to run this project locally is to use the following command:
+
+```shell
+docker run --rm -it -p8080:8080 renfis/pict
+```
+
+Then navigate to <http://localhost:8080> in your favorite desktop browser.
 
 ## Build Docker image
 
-A Docker image is pushed to Docker Hub with each CI build and can be found
-here: https://hub.docker.com/r/renfis/pict. To build and run the Docker
-image locally, execute the following commands:
+To build and run the Docker image locally, execute the following commands:
 
 ```shell
 docker build -t pict .
@@ -35,7 +41,7 @@ docker build -t pict .
 docker run --rm -it -p8080:8080 pict
 ```
 
-Then navigate to `http://localhost:8080` in your favorite desktop browser.
+Then navigate to <http://localhost:8080> in your favorite desktop browser.
 
 ## Running the application in dev mode
 
@@ -92,6 +98,10 @@ The SBOM files are also in the Docker image at the root directory as `bom.json` 
 
 For more information about SBOMs and how to use them, please see the [CycloneDX documentation](https://cyclonedx.org/docs/).
 
+# Quarkus
+
+This project uses Quarkus, the Supersonic Subatomic Java Framework.
+To learn more about Quarkus, please visit its website at https://quarkus.io/.
 
 ## Related Guides
 
