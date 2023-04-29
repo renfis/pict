@@ -1,6 +1,6 @@
 package de.renfis;
 
-import javax.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.ApplicationScoped;
 
 import io.quarkus.test.Mock;
 
