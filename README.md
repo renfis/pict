@@ -84,6 +84,15 @@ with: `./target/getting-started-1.0.0-SNAPSHOT-runner`
 If you want to learn more about building native executables, please
 consult https://quarkus.io/guides/maven-tooling.
 
+## Software Bill of Materials
+
+This project includes a Software Bill of Materials (SBOM) in the Docker image using the [CycloneDX](https://cyclonedx.org/) format. The SBOM files are generated during the `package` phase with the `cyclonedx-maven-plugin`.
+
+The SBOM files are also in the Docker image at the root directory as `bom.json` and `bom.xml`.
+
+For more information about SBOMs and how to use them, please see the [CycloneDX documentation](https://cyclonedx.org/docs/).
+
+
 ## Related Guides
 
 - RESTEasy Reactive ([guide](https://quarkus.io/guides/resteasy-reactive)): A

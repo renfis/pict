@@ -33,6 +33,8 @@ FROM ubuntu:23.04
 
 COPY --from=pict-builder --chown=1001:root /pict/pict /usr/local/bin/pict
 COPY --from=quarkus-builder --chown=1001:root /workspace/target/pict-1.0.0-SNAPSHOT-runner /usr/local/bin/app
+COPY --from=quarkus-builder --chown=1001:root /workspace/target/bom.json /
+COPY --from=quarkus-builder --chown=1001:root /workspace/target/bom.xml /
 
 ARG COMMIT_HASH
 ARG BUILD_TIME
